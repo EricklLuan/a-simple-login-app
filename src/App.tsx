@@ -1,9 +1,10 @@
-import React from 'react';
+import { Home } from "./pages/Home";
+import "./styles/global.scss"
 
 export function App() {
   return (
     <div className="App">
-      <h1>Olá! Mundo</h1>
+      <Home />
     </div>
   );
 }
