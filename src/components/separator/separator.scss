@@ -1,0 +1,29 @@
+.Separator {
+  width: 100%;
+  text-align: center;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 8px 0px;
+
+  &::before {
+    content: "";
+    display: inline-flex;
+    margin-right: 10px;
+    
+    flex-grow: 1;
+    height: 2px;
+    background: #000;
+  }
+
+  &::after {
+    content: "";
+    display: inline-flex;
+    margin-left: 10px;
+
+    flex-grow: 1;
+    height: 2px;
+    background: #000;  
+  }
+}
