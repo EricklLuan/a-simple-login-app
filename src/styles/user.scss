@@ -1,0 +1,30 @@
+#User {
+  #user-content {
+    min-width: 274.5px;
+    width: clamp(274.5px, 90%, 420px);
+    
+    min-width: 300px;
+    height: clamp(300px, 90%, 368px);
+    
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.24);
+  }
+  
+  #user-content .content {
+    
+    margin: 0 40px;
+    flex-direction: column;
+    gap: 8px;
+    
+    #user-icon { 
+      width: 144px;
+      height: 144px;
+      
+      border-radius: 50%;
+      background: gray;
+    }
+
+    p { color: rgba(0, 0, 0, .7) }
+  }
+}

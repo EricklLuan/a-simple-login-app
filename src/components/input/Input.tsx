@@ -4,17 +4,21 @@ type InputProps = {
   type?: string;
   name?: string;
   value?: string;
+  onChange?: (event?: any) => void;
+  onSubmit?: (event?: any) => void;
   placeholder?: string;
 }
 
 export function Input(props: InputProps) {
   return(
     <input
-      type={props.type}
+      className="Input"
       name={props.name}
+      type={props.type}
       value={props.value}
       placeholder={props.placeholder}
-      className="Input"
+      onChange={props.onChange}
+      onSubmit={props.onSubmit}
     />
   );
 }

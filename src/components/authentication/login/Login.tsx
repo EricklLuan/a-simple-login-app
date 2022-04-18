@@ -1,3 +1,9 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { sigin } from "../../../hooks/sigin"
+import { auth } from '../../../services/firebase';
+
 import { Separator } from '../../separator/Separator';
 import { Button } from '../../button/Button';
 import { Input } from '../../input/Input';
@@ -10,8 +16,18 @@ type LoginProps = {
 
 export function Login(props: LoginProps) {
 
+  const navigate = useNavigate();
+
+  const user = auth.currentUser;
+  const [ email, setEmail ] = useState<string>("")
+  const [ password, setPassword ] = useState<string>("")
+
   function handleFormSubmit(event: any) {
     event.preventDefault();
+    sigin(email, password)
+    user?.reload();
+    
+    if (user) navigate("/user");  
   }
 
   function handleChangeForm() {
@@ -23,8 +39,8 @@ export function Login(props: LoginProps) {
       <div id="login-content" className="flex">
         <form className="flex" onSubmit={handleFormSubmit}>
           <h1>Login</h1>
-          <Input type="email" placeholder="Email"/>
-          <Input type="password" placeholder="Password"/>
+          <Input type="email" placeholder="Email" onChange={(event: any) => setEmail(event.target.value)}/>
+          <Input type="password" placeholder="Password" onChange={(event: any) => setPassword(event.target.value)}/>
           <p className="p-sma">Forgot password?</p>
           <Button type="submit">Send</Button>
         </form>

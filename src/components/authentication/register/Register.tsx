@@ -1,3 +1,9 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { sigup } from "../../../hooks/sigup"
+import { auth } from "../../../services/firebase";
+
 import { Button } from "../../button/Button";
 import { Input } from "../../input/Input";
 import { Separator } from "../../separator/Separator";
@@ -10,8 +16,18 @@ type RegisterProps = {
 
 export function Register(props: RegisterProps) {
 
+  const navigate = useNavigate()
+
+  const user = auth.currentUser;
+  const [ name, setName ] = useState<string>("")
+  const [ email, setEmail ] = useState<string>("")
+  const [ password, setPassword ] = useState<string>("")
+
   function handleFormSubmit(event: any) {
     event.preventDefault();
+    sigup(name, email, password)
+    
+    if (user) navigate("/user")
   }
 
   function handleChangeForm() {
@@ -23,9 +39,9 @@ export function Register(props: RegisterProps) {
       <div className="register-content flex">
         <form className="flex fill-parent" onSubmit={handleFormSubmit}>
           <h1>Register</h1>
-          <Input type="text" placeholder="Name"/>
-          <Input type="email" placeholder="Email" />
-          <Input type="password" placeholder="Password"/>
+          <Input type="text" placeholder="Name" onChange={(event: any) => setName(event.target.value)}/>
+          <Input type="email" placeholder="Email" onChange={(event: any) => setEmail(event.target.value)}/>
+          <Input type="password" placeholder="Password" onChange={(event: any) => setPassword(event.target.value)}/>
           <Input type="password" placeholder="Password" />
           <Button type="submit">Send</Button>
         </form>
