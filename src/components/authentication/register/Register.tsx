@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { sigup } from "../../../hooks/sigup"
+import { sigup } from "../../../functions/sigup"
 import { auth } from "../../../services/firebase";
 
 import { Button } from "../../button/Button";
 import { Input } from "../../input/Input";
 import { Separator } from "../../separator/Separator";
+
 
 import "./register.scss"
 

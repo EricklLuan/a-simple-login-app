@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { sigin } from "../../../hooks/sigin"
+import { sigin } from "../../../functions/sigin"
 import { auth } from '../../../services/firebase';
 
 import { Separator } from '../../separator/Separator';
@@ -21,15 +21,15 @@ export function Login(props: LoginProps) {
   const user = auth.currentUser;
   const [ email, setEmail ] = useState<string>("")
   const [ password, setPassword ] = useState<string>("")
-
-  function handleFormSubmit(event: any) {
+  
+  async function handleFormSubmit(event: any) {
     event.preventDefault();
-    sigin(email, password)
+    await sigin(email, password)
     user?.reload();
     
     if (user) navigate("/user");  
   }
-
+  
   function handleChangeForm() {
     props.setIsLogin(false);
   }
@@ -48,8 +48,8 @@ export function Login(props: LoginProps) {
         <Separator>
           or
         </Separator>
-      
-        <p className="p-nor txt-center">
+
+        <p id="bottom-txt" className="p-nor txt-center">
           No account? <span id="clicked" className="txt-under txt-s-bold" onClick={handleChangeForm}>Signup</span>
         </p>
       </div>
