@@ -3,7 +3,7 @@ import { auth } from "../services/firebase"
 
 export async function sigup(name:string, email: string, password: string) {
   const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
-  updateProfile(userCredentials.user, {
+  await updateProfile(userCredentials.user, {
     displayName: name, 
     photoURL: null
   })

@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { auth } from "../services/firebase";
+import { useEffect, useState } from "react"
+import { auth } from "../services/firebase"
+
+import { Extra } from "../components/extra/Extra"
 
 import "../styles/user.scss"
 
@@ -24,6 +26,7 @@ export function User() {
           <p className="p-sma">{user?.email}</p>
         </section>
       </div>
+      <Extra></Extra>
     </div>
   );
 }

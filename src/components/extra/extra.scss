@@ -1,0 +1,66 @@
+.Extra {
+
+  
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  
+  margin: 20px;
+  
+  flex-direction: column;
+  align-items: flex-end;
+  
+  gap: 16px;
+  
+  #ballon {
+
+    --theme-color: transparent;
+    
+    display: grid;
+    width: 200px;
+    height: 200px;
+    background: var(--theme-color);
+    border-radius: 5px;
+
+    transition: all 0.5s ease-in-out;
+
+    &::after {
+      content: '';
+
+      transition: all 0.5s ease-in-out;
+      justify-self: flex-end;
+      align-self: flex-end;
+      position: absolute;
+      bottom: 46px;
+      right: 12px;
+      z-index: -1;
+
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid var(--theme-color);
+
+    }
+  }
+  
+  #ballon #options {
+    
+  }
+  
+  #extra-button {
+    height: 40px;
+    width: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: black;
+    color: white;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+  }
+
+
+}

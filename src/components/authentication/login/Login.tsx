@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { sigin } from "../../../functions/sigin"
 import { auth } from '../../../services/firebase';
 
-import { Separator } from '../../separator/Separator';
 import { Button } from '../../button/Button';
 import { Input } from '../../input/Input';
 
@@ -44,11 +43,7 @@ export function Login(props: LoginProps) {
           <p className="p-sma">Forgot password?</p>
           <Button type="submit">Send</Button>
         </form>
-        
-        <Separator>
-          or
-        </Separator>
-
+      
         <p id="bottom-txt" className="p-nor txt-center">
           No account? <span id="clicked" className="txt-under txt-s-bold" onClick={handleChangeForm}>Signup</span>
         </p>

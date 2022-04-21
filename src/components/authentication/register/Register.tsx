@@ -6,8 +6,6 @@ import { auth } from "../../../services/firebase";
 
 import { Button } from "../../button/Button";
 import { Input } from "../../input/Input";
-import { Separator } from "../../separator/Separator";
-
 
 import "./register.scss"
 
@@ -24,9 +22,9 @@ export function Register(props: RegisterProps) {
   const [ email, setEmail ] = useState<string>("")
   const [ password, setPassword ] = useState<string>("")
 
-  function handleFormSubmit(event: any) {
+  async function handleFormSubmit(event: any) {
     event.preventDefault();
-    sigup(name, email, password)
+    await sigup(name, email, password)
     
     if (user) navigate("/user")
   }
@@ -46,11 +44,7 @@ export function Register(props: RegisterProps) {
           <Input type="password" placeholder="Password" />
           <Button type="submit">Send</Button>
         </form>
-
-        <Separator>
-          or
-        </Separator>
-
+        
         <p className="p-nor txt-center">
           Already are a user? <span id="clicked" className="txt-under txt-s-bold" onClick={handleChangeForm}>Login</span>
         </p>
