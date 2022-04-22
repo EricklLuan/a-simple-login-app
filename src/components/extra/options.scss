@@ -1,0 +1,36 @@
+.Options {
+  height: 25px;
+  list-style: none;
+  transition: all 0.3s ease-in-out;
+
+  button {
+    transition: all 0.3s ease-in-out;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+    background: var(--theme-color);
+    border: none;
+    color: white;
+
+    cursor: pointer;
+  }
+
+  button p {
+    margin-right: 10px;
+  }
+
+  button img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+  }
+
+  button:hover {
+    filter: contrast(.75);
+  }
+}

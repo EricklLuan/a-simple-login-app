@@ -2,6 +2,13 @@ import { useEffect, useState } from "react"
 import { auth } from "../services/firebase"
 
 import { Extra } from "../components/extra/Extra"
+import { ExtraElement } from "../components/extra/ExtraElement";
+import { Options } from "../components/extra/Options";
+
+import logoutIcon from '../assets/logout.svg'
+import editIcon from '../assets/edit.svg'
+import deleteIcon from '../assets/delete.svg'
+import creditsIcon from '../assets/notes.svg'
 
 import "../styles/user.scss"
 
@@ -26,7 +33,13 @@ export function User() {
           <p className="p-sma">{user?.email}</p>
         </section>
       </div>
-      <Extra></Extra>
+      <Extra>
+        <Options src={logoutIcon}>Logout</Options>
+        <Options src={editIcon}>Edit account</Options>
+        <Options src={deleteIcon}>Delete account</Options>
+        <hr />
+        <ExtraElement src={creditsIcon}>Credits</ExtraElement>
+      </Extra>
     </div>
   );
 }

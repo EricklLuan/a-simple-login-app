@@ -8,9 +8,9 @@ type ExtraProps = {
 }
 
 export function Extra(props: ExtraProps) {
-
   
   const [ visible, setVisible ] = useState<boolean>(false);
+  const [ colorVisible, setColorVisible ] = useState<boolean>(false);
   const [ color, setColor ] = useState<string>("transparent")
   
   const style: CSS.Properties = {
@@ -19,13 +19,18 @@ export function Extra(props: ExtraProps) {
   };
 
   useEffect(() => {
-    if (!visible) setColor("transparent");
-    else setColor("black")
-  }, [visible])
+    if (!colorVisible) { 
+      setColor("transparent"); 
+      setTimeout(() => setVisible(false), 300); 
+    } else { 
+      setVisible(true);
+      setTimeout(() => setColor("black"), 100); 
+    }
+  }, [colorVisible])
 
   window.onclick = (event: any) => {
     if (event?.target?.parentElement !== document.getElementsByClassName("Extra")[0] ) {
-      setVisible(false);
+      setColorVisible(false);
     }
   };
 
@@ -40,7 +45,7 @@ export function Extra(props: ExtraProps) {
         </section>
       ) : <></> }
 
-      <button id="extra-button" onClick={() => setVisible(!visible)}>?</button>
+      <button id="extra-button" onClick={() => setColorVisible(!colorVisible)}>?</button>
     </div>
   );
 }
