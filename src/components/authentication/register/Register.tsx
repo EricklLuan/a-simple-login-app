@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { sigup } from "../../../functions/sigup"
-import { auth } from "../../../services/firebase";
 
 import { Button } from "../../button/Button";
 import { Input } from "../../input/Input";
@@ -17,16 +16,15 @@ export function Register(props: RegisterProps) {
 
   const navigate = useNavigate()
 
-  const user = auth.currentUser;
   const [ name, setName ] = useState<string>("")
   const [ email, setEmail ] = useState<string>("")
   const [ password, setPassword ] = useState<string>("")
 
   async function handleFormSubmit(event: any) {
     event.preventDefault();
-    await sigup(name, email, password)
-    
-    if (user) navigate("/user")
+    sigup(name, email, password).then(() => {
+      navigate("/user")
+    })
   }
 
   function handleChangeForm() {

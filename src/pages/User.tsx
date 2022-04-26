@@ -34,13 +34,16 @@ export function User() {
     return () => unsubscribe();
   }, [])
 
-  async function handleUserLogout() {
-    await signOut(auth);
-    navigate("/");
+  function handleUserLogout() {
+    signOut(auth).then(() => {
+      navigate("/");
+    });
   }
 
   function handleDeleteUser() {
-
+    user?.delete().then(() => {
+      navigate("/");
+    });
   }
 
   return(
@@ -70,6 +73,7 @@ export function User() {
       <WarningModal message="After confirm, you will be not able to access your account anymore. You have sure?" 
         visible={deleteModalIsIvsivle} 
         setVisibility={setDeleteModalVisibility} 
+        onConfrim={handleDeleteUser}
       />
       <CreditModal visible={creditModalIsVisible} setVisibility={setCreditModalVisibility} />
 
