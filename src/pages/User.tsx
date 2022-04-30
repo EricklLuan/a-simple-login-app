@@ -9,6 +9,7 @@ import { Options } from "../components/extra/Options";
 
 import { CreditModal } from "../components/modals/CreditModal/CreditModal"
 import { WarningModal } from "../components/modals/WarningModal/WarningModal"
+import { EditModal } from "../components/modals/EditModal/EditModal"
 
 import logoutIcon from '../assets/logout.svg'
 import editIcon from '../assets/edit.svg'
@@ -25,6 +26,7 @@ export function User() {
   const [creditModalIsVisible, setCreditModalVisibility] = useState(false);
   const [deleteModalIsIvsivle, setDeleteModalVisibility] = useState(false);
   const [logoutModalIsIvsivle, setLogoutModalVisibility] = useState(false);
+  const [editModalIsIvsivle, setEditModalVisibility] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -70,11 +72,15 @@ export function User() {
         setVisibility={setLogoutModalVisibility}
         onConfrim={handleUserLogout}
       />
+
+      <EditModal visible={editModalIsIvsivle} setVisibility={setEditModalVisibility}/>
+
       <WarningModal message="After confirm, you will be not able to access your account anymore. You have sure?" 
         visible={deleteModalIsIvsivle} 
         setVisibility={setDeleteModalVisibility} 
         onConfrim={handleDeleteUser}
       />
+      
       <CreditModal visible={creditModalIsVisible} setVisibility={setCreditModalVisibility} />
 
     </>
